@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <!-- Onisio Thomas -->
+    
+    <!-- Link to Google Fonts for custom font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    
+    <!-- Add custom CSS styles -->
+    <style>
+        body {
+            font-family: "Indie Flower", cursive;
+            background-color: #444444;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-family: "Indie Flower", cursive;
+            font-size: 5.2em;
+            color: #8646b4;
+        }
+        #result {
+            font-family: "Indie Flower", cursive;
+            margin-top: 20px;
+            font-size: 2.2em;
+        }
+        button {
+            font-family: "Indie Flower", cursive;
+            font-size: 2.2em;
+            background-color: #8646b4;
+            color: white;
+            border: none;
+            padding: 20px 30px;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+        button:hover {
+            font-family: "Indie Flower", cursive;
+            background-color: #8646b4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Palindrome Checker</h1>
+    <!-- The result of palindrome check will be displayed here -->
+    <div id="result"></div>
+    <!-- Button to prompt user for input -->
+    <button onclick="checkPalindrome()">Check a Palindrome</button>
+
+    <!-- JavaScript to handle the palindrome checking -->
+    <script>
+        // Function to check if the input string is a palindrome
+        function checkPalindrome() {
+            // Prompt user for a string
+            let input = prompt("Enter a word or phrase:");
+
+            // If user cancels the prompt, exit the function
+            if (input === null) return;
+
+            // Remove spaces and convert to lowercase for comparison
+            let cleanInput = input.replace(/\s+/g, '').toLowerCase();
+            let reversedInput = cleanInput.split('').reverse().join('');
+
+            // Compare cleaned input with its reversed version
+            if (cleanInput === reversedInput) {
+                document.getElementById('result').innerText = `"${input}" is a palindrome!`;
+            } else {
+                document.getElementById('result').innerText = `"${input}" is not a palindrome.`;
+            }
+
+            // Ask the user if they want to check another string
+            if (confirm("Do you want to check another word or phrase?")) {
+                checkPalindrome(); // If yes, call the function again
+            }
+        }
+    </script>
+</body>
+</html>
